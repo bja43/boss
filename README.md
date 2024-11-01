@@ -6,6 +6,7 @@ from dao import er_dag, corr, simulate
 
 from scores import BIC
 from gst import GST
+from boss import boss
 
 
 p = 100

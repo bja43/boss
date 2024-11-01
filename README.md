@@ -2,6 +2,12 @@
 A Python implementation of the best order score search causal discovery algorithm.
 
 ```python
+from dao import er_dag, corr, simulate
+
+from scores import BIC
+from gst import GST
+
+
 p = 100
 n = 1000
 

@@ -1,23 +1,7 @@
-from numpy import zeros
-from numpy.random import default_rng
-
-from gst import GST
-from scores import BIC
-
 import numpy as np
 
-from dao import er_dag, corr, simulate
-
-
-def boss(order, gsts, rng=default_rng()):
-    variables = [v for v in order]
-    while True:
-        improved = False
-        rng.shuffle(variables)
-        for v in variables:
-            improved |= better_mutation(v, order, gsts)
-        if not improved: break
-    return order
+from numpy import zeros
+from numpy.random import default_rng
 
 
 def reversed_enumerate(iter, j):
@@ -50,9 +34,20 @@ def better_mutation(v, order, gsts):
             score += gsts[w].trace(prefix)
         scores[j] += score
         if scores[j] > scores[best]: best = j
-        
+
     if scores[i] + 1e-6 > scores[best]: return False
     order.remove(v)
     order.insert(best - int(best > i), v)
 
     return True
+
+
+def boss(order, gsts, rng=default_rng()):
+    variables = [v for v in order]
+    while True:
+        improved = False
+        rng.shuffle(variables)
+        for v in variables:
+            improved |= better_mutation(v, order, gsts)
+        if not improved: break
+    return order

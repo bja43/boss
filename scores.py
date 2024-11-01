@@ -16,7 +16,7 @@ class BIC:
 
     def get_pd(self): return self.pd
 
-    def set_pd(self, pd): 
+    def set_pd(self, pd):
         self.pd = pd
         self.w = pd / 4.0 * log(self.n) / self.n
 

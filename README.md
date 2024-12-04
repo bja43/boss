@@ -2,6 +2,9 @@
 A Python implementation of the best order score search causal discovery algorithm.
 
 ```python
+import numpy as np
+
+from numpy.random import default_rng
 from dao import er_dag, corr, simulate
 
 from scores import BIC
